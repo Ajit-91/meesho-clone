@@ -2,14 +2,14 @@ const User = require('../models/User')
 const { sendToken } = require('../utils/tokenUtils')
 
  const registerUser = async(req, res)=>{
-    const {name, email, phoneNo, password} = req.body
-    if(!name || !email || !phoneNo || !password){
+    const {name, email, mobileNo, password} = req.body
+    if(!name || !email || !mobileNo || !password){
         return res.status(400).json({msg : "one or more field required"})
     }
-    if(phoneNo <= 999999999){
+    if(mobileNo <= 999999999){
         return res.status(400).json({msg : "Enter a 10 digit number"})
     }
-
+    
     try{
         const foundUser = await User.findOne({email})
         if(foundUser) return res.status(400).json({msg : "User already exist"})
@@ -18,7 +18,7 @@ const { sendToken } = require('../utils/tokenUtils')
             name,
             email,
             password,
-            phoneNo,
+            mobileNo,
         })
 
         const savedUser = await user.save()

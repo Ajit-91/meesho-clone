@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         required : true,
         unique : true
     },
-    phoneNo : {
+    mobileNo : {
         type : Number,
         required : true,
         min : 999999999,
