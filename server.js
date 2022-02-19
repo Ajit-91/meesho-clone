@@ -22,7 +22,7 @@ app.use(cookieParser())
 // app.use(require("./routes/adminRoutes/adminRoutes"))
 app.use(require("./routes/supplierRoutes"))
 app.use(require("./routes/commonRoutes"))
-
+app.use(require('./routes/adminRoutes'))
 
 app.listen(PORT, ()=>{
     console.log(`server started at port ${PORT}`)

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const catalogSchema = new mongoose.Schema({
     creator : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'Supplier'
+        ref : 'User'
     },
     category : {
         type : String,

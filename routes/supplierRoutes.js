@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { registerSupplier, 
-            loginSupplier
+const { registerUser, 
+            loginUser
           } = require("../controllers/supplierControllers")
 
-router.post("/api/register-supplier", registerSupplier)
-router.post("/api/login-supplier", loginSupplier)
+router.post("/api/register", registerUser)
+router.post("/api/login", loginUser)
 
 module.exports = router

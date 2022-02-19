@@ -1,7 +1,7 @@
-const Supplier = require('../models/Supplier')
-const { sendToken } = require('../../utils/tokenUtils')
+const User = require('../models/User')
+const { sendToken } = require('../utils/tokenUtils')
 
- exports.registerSupplier = async(req, res)=>{
+ exports.registerUser = async(req, res)=>{
     const {name, email, phoneNo, password} = req.body
     if(!name || !email || !phoneNo || !password){
         return res.status(400).json({msg : "one or more field required"})
@@ -11,39 +11,39 @@ const { sendToken } = require('../../utils/tokenUtils')
     }
 
     try{
-        const foundSupplier = await Supplier.findOne({email})
-        if(foundSupplier) return res.status(400).json({msg : "Supplier already exist"})
+        const foundUser = await User.findOne({email})
+        if(foundUser) return res.status(400).json({msg : "User already exist"})
 
-        const supplier = new Supplier({
+        const user = new User({
             name,
             email,
             password,
             phoneNo,
         })
 
-        const savedSupplier = await supplier.save()
-        sendToken(savedSupplier, res)
+        const savedUser = await user.save()
+        sendToken(savedUser, res)
 
     }catch(err){
         console.log(err)
-        await Supplier.deleteOne({email})
+        await User.deleteOne({email})
         res.status(500).json({msg : "something went wrong", error : err.message})
     }
 }
-// ============Login Supplier===============
+// ============Login User===============
 
- exports.loginSupplier = async (req, res) =>{
+ exports.loginUser = async (req, res) =>{
     const { email, password } = req.body;
     if(!email || !password) return res.status(400).json({msg : "one or more fields required"})
 
     try {
-        const foundSupplier = await Supplier.findOne({ email });
-        if(!foundSupplier) return res.status(400).json({msg : "Either email or password is wrong"})
+        const foundUser = await User.findOne({ email });
+        if(!foundUser) return res.status(400).json({msg : "Either email or password is wrong"})
 
-        const isMatching =  foundSupplier.comparePassword(password);
+        const isMatching =  foundUser.comparePassword(password);
         if(!isMatching) return res.status(400).json({msg : "Either email or password is wrong"})
 
-        sendToken(foundSupplier, res)
+        sendToken(foundUser, res)
 
     } catch (err) {
         console.log(err)

@@ -1,20 +1,22 @@
-const Admin = require('../Models/Admin')
-const Supplier = require('../Models/Supplier')
+// const Admin = require('../Models/Admin')
+const User = require('../models/User')
 const { verifyAndSendInfo } = require("../utils/tokenUtils")
 
 const fetchUser = async (req, res) =>{
     try {
-        const {userInfo} = req.cookies
+        // const {userInfo} = req.cookies
 
-        if(!userInfo) return res.status(400).json({msg : "Please Login"})
+        // if(!userInfo) return res.status(400).json({msg : "Please Login"})
 
-        const data = JSON.parse(userInfo)
+        // const data = JSON.parse(userInfo)
         
-        if (data.userType === "admin") {
-            verifyAndSendInfo(data.authToken, Admin, res)
-        }else{
-            verifyAndSendInfo(data.authToken, Supplier, res)
-        }
+        // verifyAndSendInfo(data.authToken, User, res)
+        // if (data.userType === "admin") {
+        // }else{
+        //     verifyAndSendInfo(data.authToken, User, res)
+        // }
+        // console.log("fetch",req.user)
+        return res.status(200).json({msg : "success", response : req.user})
 
     } catch (err) {
         console.log(err)

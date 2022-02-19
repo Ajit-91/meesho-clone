@@ -14,18 +14,18 @@ const sendToken =  (user, res)=>{
     }
     res.status(200).cookie('userInfo', JSON.stringify(data), options).json({
         msg : "success",
-        response : data
+        response : user
     })
 }
 
-const verifyAndSendInfo = async (token, User, res)=>{
-    try {
-        const decodedData =  jwt.verify(token, process.env.JWT_SECRET)
-        const resp = await User.findById(decodedData._id).select("-password")
-        res.status(200).json({msg : "success", response : resp})
-    } catch (err) {
-         console.log(err)
-    }
-}
+// const verifyAndSendInfo = async (token, User, res)=>{
+//     try {
+//         const decodedData =  jwt.verify(token, process.env.JWT_SECRET)
+//         const resp = await User.findById(decodedData._id).select("-password")
+//         res.status(200).json({msg : "success", response : resp})
+//     } catch (err) {
+//          console.log(err)
+//     }
+// }
 
-module.exports = {sendToken, verifyAndSendInfo}
+module.exports = {sendToken}

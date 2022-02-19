@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const supplierSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userType : {
         type : String,
         default : "supplier"
@@ -29,7 +29,7 @@ const supplierSchema = new mongoose.Schema({
 },{timestamps : true})
 
 // --------Hashing password------------------------
-supplierSchema.pre('save', async function(next){
+userSchema.pre('save', async function(next){
     if(this.isModified('password')){
         this.password = await bcrypt.hash(this.password, 10)
     }
@@ -37,7 +37,7 @@ supplierSchema.pre('save', async function(next){
 })
 
 // --------Comparing password------------------------
-supplierSchema.methods.comparePassword = async function(password){
+userSchema.methods.comparePassword = async function(password){
     try {
         return await bcrypt.compare(password, this.password)
     } catch (err) {
@@ -47,10 +47,10 @@ supplierSchema.methods.comparePassword = async function(password){
 
 // --------generatingToken----------------------------
 
-supplierSchema.methods.getToken = function(){
+userSchema.methods.getToken = function(){
     return jwt.sign({_id : this._id}, process.env.JWT_SECRET,{
         expiresIn : Math.floor(Date.now()/1000) + process.env.COOKIE_EXPIRE*24*60*60
     })
 }
 
-module.exports = mongoose.model('Supplier', supplierSchema)
+module.exports = mongoose.model('User', userSchema)
