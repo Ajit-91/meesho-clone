@@ -1,5 +1,5 @@
 
-exports.isAdmin = async (req, res, next) => {
+const isAdmin = async (req, res, next) => {
     try {
         if(req.user.userType === "admin") next()
         else{
@@ -10,3 +10,5 @@ exports.isAdmin = async (req, res, next) => {
         res.status(500).json({msg : "something went wrong", error : err.message})
     }
 }
+
+module.exports = isAdmin

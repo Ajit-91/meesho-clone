@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { registerUser, 
-            loginUser
-          } = require("../controllers/supplierControllers")
+const { addCatalog } = require("../controllers/supplierControllers")
+const  isAuthenticated = require('../middlewares/isAuthenticated')
 
-router.post("/api/register", registerUser)
-router.post("/api/login", loginUser)
-
+router.get("/api/add-catalog", isAuthenticated, addCatalog)
+router.get('/api/get-my-catalogs')
 module.exports = router

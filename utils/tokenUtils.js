@@ -12,6 +12,7 @@ const sendToken =  (user, res)=>{
         userType : user.userType,
         authToken : token
     }
+    console.log(data.authToken)
     res.status(200).cookie('userInfo', JSON.stringify(data), options).json({
         msg : "success",
         response : user

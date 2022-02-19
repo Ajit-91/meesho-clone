@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB_CONNECTION).then(()=>{
 // ----------MiddleWares--------------------------
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
-app.use(cors())
+app.use(cors({ origin: true, credentials: true }))
 app.use(cookieParser())
 
 //  -----------Routes-----------------------------
