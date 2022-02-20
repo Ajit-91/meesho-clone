@@ -6,9 +6,6 @@ const { sendToken } = require('../utils/tokenUtils')
     if(!name || !email || !mobileNo || !password){
         return res.status(400).json({msg : "one or more field required"})
     }
-    if(mobileNo <= 999999999){
-        return res.status(400).json({msg : "Enter a 10 digit number"})
-    }
     
     try{
         const foundUser = await User.findOne({email})
@@ -71,10 +68,10 @@ const logoutUser = async (req, res) =>{
             expires : new Date(Date.now()),
             httpOnly : true
         })
-        res.cookie('token', null, {
-            expires : new Date(Date.now()),
-            httpOnly : true
-        })
+        // res.cookie('token', null, {
+        //     expires : new Date(Date.now()),
+        //     httpOnly : true
+        // })
         res.status(200).json({msg : "success"})
     } catch (err) {
         console.log(err)
