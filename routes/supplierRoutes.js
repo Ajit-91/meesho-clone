@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { addCatalog } = require("../controllers/supplierControllers")
+const { addCatalog, fetchMyCatalogs } = require("../controllers/supplierControllers")
 const  isAuthenticated = require('../middlewares/isAuthenticated')
 
-router.get("/api/add-catalog", isAuthenticated, addCatalog)
-router.get('/api/get-my-catalogs')
+router.post("/api/add-catalog", isAuthenticated, addCatalog)
+router.get('/api/fetch-my-catalogs', isAuthenticated, fetchMyCatalogs)
+
 module.exports = router
