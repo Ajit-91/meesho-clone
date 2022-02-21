@@ -13,12 +13,20 @@ const catalogSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+    gst : {
+        type : Number,
+        required : true
+    },
     MRP : {
         type : Number,
         required : true
     },
     meeshoPrice : {
         type : Number,
+        required : true
+    },
+    description : {
+        type : String,
         required : true
     },
     status : {
