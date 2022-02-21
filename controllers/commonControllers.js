@@ -8,7 +8,7 @@ const { sendToken } = require('../utils/tokenUtils')
     }
     
     try{
-        const foundUser = await User.findOne({email})
+        const foundUser = await User.findOne({$or : [{email}, {mobileNo}]})
         if(foundUser) return res.status(400).json({msg : "User already exist"})
 
         const user = new User({
