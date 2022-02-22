@@ -4,7 +4,7 @@ import { fetchApi } from "../utils/fetchApi"
 
 export const uploadToCloud = async (data) =>{
 
-    const route = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`
+    const route = `https://api.cloudinary.com/v1_1/ddxohc53h/image/upload`
     const options = {
         method : "POST",
         body : data
