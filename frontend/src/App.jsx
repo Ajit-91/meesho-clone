@@ -6,8 +6,8 @@ import { SET_USER } from './Redux/Slices/userSlice';
 import AuthLayout from './layouts/AuthLayout';
 import AdminLayout from './layouts/AdminLayout';
 import SupplierLayout from './layouts/SupplierLayout';
+import Loading from './components/Loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css'
 
 const App = () => {
@@ -39,7 +39,7 @@ const App = () => {
     return (
         <>
         {
-            loading ? <h1>Loading....</h1>
+            loading ? <Loading loading={loading} />
             : (
                 <>
                     {
