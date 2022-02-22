@@ -1,0 +1,57 @@
+.navList{
+    position: absolute;
+    right: 12px;
+    top: 90px;
+    margin: inherit;
+    /* padding: inherit; */
+    background-color: white;
+    color: black;
+    width: 20%;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.User_Info{
+    pointer-events: none;
+    max-width: 100%;
+}
+
+.User_Info > div {
+    max-width: 100%;
+}
+.User_Info > div > h5{
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.User_Info > div >small{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+
+
+@media  screen and (max-width : 858px){
+    .navList{
+        width: 25%;
+    }
+}
+@media  screen and (max-width : 658px){
+    .navList{
+        width: 30%;
+    }
+}
+@media  screen and (max-width : 540px){
+    .navList{
+        width: 40%;
+    }
+}
+@media  screen and (max-width : 438px){
+    .navList{
+        width: 50%;
+    }
+}

@@ -1,0 +1,38 @@
+.formCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.myTextfield{
+    border-color: #fd4375 !important;
+}
+
+.gotoOtherRoute{
+    cursor: pointer;
+    color: #fd4375;
+}
+.gotoOtherRoute:hover{
+    text-decoration: underline;
+}
+
+.authForm{
+    width: 50%;
+}
+
+@media screen and (max-width : 750px) {
+    .authForm{
+        width: 70%;
+    }
+}
+@media screen and (max-width : 425px) {
+    .authForm{
+        width: 85%;
+    }
+}
+@media screen and (max-width : 348px) {
+    .authForm{
+        width: 95%;
+    }
+}
