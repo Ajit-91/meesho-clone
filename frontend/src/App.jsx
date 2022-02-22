@@ -39,7 +39,7 @@ const App = () => {
     return (
         <>
         {
-            loading ? <Loading loading={loading} />
+            loading ? <Loading loading={loading} backdrop={false} />
             : (
                 <>
                     {
