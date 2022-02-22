@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cors({ origin: true, credentials: true }))
 app.use(cookieParser())
-
+app.set("trust proxy", 1);
 //  -----------Routes-----------------------------
 // app.use(require("./routes/adminRoutes/adminRoutes"))
 app.use(require("./routes/supplierRoutes"))
