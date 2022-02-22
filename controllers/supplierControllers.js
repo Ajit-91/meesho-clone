@@ -2,8 +2,11 @@ const Catalog = require('../models/Catalog')
 
 const addCatalog = async(req, res) => {
     try {
-        const {creator, category, image, MRP, meeshoPrice} = req.body
-        if(!creator || !category || !image || !MRP || !meeshoPrice) return res.status(400).json({msg : "one or more fields required"})
+        const {creator, category, image, MRP, meeshoPrice, gst, description}= req.body
+        console.log(req.body)
+        if(!creator || !category || !image || !MRP || !meeshoPrice || !gst || !description){
+            return res.status(400).json({msg : "one or more fields required"})
+        } 
         
         const catalog = new Catalog({
             ...req.body

@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
         type : Number,
         required : true,
         min : [999999999, "Enter a valid mobile no."],
+        max : [9999999999, "Enter a valid mobile no."],
         unique : true
     },
     password : {
